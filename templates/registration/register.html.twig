@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center">Register</h1>
+
+        {{ form_start(registrationForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+        {{ form_errors(registrationForm) }}
+
+        <div class="row">
+            <!-- Première Colonne -->
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                    {{ form_label(registrationForm.nom, 'Nom', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.nom) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.prenom, 'Prénom', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.prenom) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.plainPassword.first, 'Mot de Passe', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.plainPassword.first) }}
+                </div>
+
+                 <div class="form-group">
+                    {{ form_label(registrationForm.plainPassword.second, 'Répéter le Mot de Passe', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.plainPassword.second) }}
+                </div>
+            </div>
+
+            <!-- Deuxième Colonne -->
+            <div class="col-lg-6 col-md-12">
+                 <div class="form-group">
+                    {{ form_label(registrationForm.date_naissance, 'Date de Naissance', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.date_naissance, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.date_naissance) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.adresse, 'Adresse', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.adresse, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.adresse) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.code_postal, 'Code Postal', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.code_postal, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.code_postal) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.ville, 'Ville', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.ville, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.ville) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(registrationForm.numero_telephone, 'Numéro de Téléphone', {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(registrationForm.numero_telephone, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.numero_telephone) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-check">
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(registrationForm.agreeTerms, 'J\'accepte les conditions', {'label_attr': {'class': 'form-check-label'}}) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+        </div>
+
+        <div>
+        <input type="checkbox" name="_remember_me" id="remember_me" />
+        <label for="remember_me">Se souvenir de moi</label>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        
+
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

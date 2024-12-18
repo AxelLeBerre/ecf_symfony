@@ -1,0 +1,35 @@
+{# templates/admin/dashboard.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord de l'Admin{% endblock %}
+
+{% block body %}
+    <h1>Tableau de bord Administrateur</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Rôles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles | join(', ') }}</td>
+                    <td>
+                        <a href="{{ path('admin_edit_user', {'id': user.id}) }}" class="btn btn-primary">Modifier</a>
+                        {% if 'ROLE_ADMIN' not in user.roles %}
+                            <a href="{{ path('admin_promote_user', {'id': user.id}) }}" class="btn btn-success">Promouvoir en Admin</a>
+                        {% else %}
+                            <span class="badge bg-success">Administrateur</span>
+                        {% endif %}
+                    </td>
+                </tr>php
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

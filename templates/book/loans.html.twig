@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de mes emprunts{% endblock %}
+
+{% block body %}
+<h1>Liste de mes emprunts</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID du prêt</th>
+            <th>Nom du livre</th>
+            <th>Auteur</th>
+            <th>Date d'emprunt</th>
+            <th>Date retour prévue</th>
+            <th>Date retour réelle</th>
+            <th>Extension utilisée</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for loan in bookLoans %}
+            <tr>
+                <td>{{ loan.id }}</td>
+                <td>{{ loan.book.titre }}</td>
+                <td>{{ loan.book.auteur }}</td>
+                <td>{{ loan.dateEmprunt|date('Y-m-d') }}</td>
+                <td>{{ loan.dateRetourPrevue ? loan.dateRetourPrevue|date('Y-m-d') : 'Non précisé' }}</td>
+                <td>
+                    {% if loan.dateRetourReelle %}
+                        {{ loan.dateRetourReelle|date('Y-m-d') }}
+                    {% else %}
+                        Non retourné
+                    {% endif %}
+                </td>
+                <td>
+                    {% if loan.extensionUtilisee %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7" class="text-center">Aucun emprunt trouvé.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_home') }}" class="btn btn-link">Retour à l'accueil</a>
+{% endblock %}
+

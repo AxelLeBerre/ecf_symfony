@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emprunt d'un livre{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Emprunter un Livre</h1>
+
+    <!-- Réduction de la largeur de la carte -->
+    <div class="card shadow-sm p-4" style="max-width: 500px; margin: 0 auto;">
+        {{ form_start(form) }}
+
+        <!-- Date d'emprunt -->
+        <div class="mb-3">
+            {{ form_label(form.date_emprunt, 'Date d\'emprunt', { 'label_attr': { 'class': 'form-label fw-bold' } }) }}
+            {{ form_widget(form.date_emprunt, { 'attr': { 'class': 'form-control' } }) }}
+            {{ form_errors(form.date_emprunt) }}
+        </div>
+
+        <!-- Date de retour prévue -->
+        <div class="mb-3">
+            {{ form_label(form.date_retour_prevue, 'Date de retour prévue', { 'label_attr': { 'class': 'form-label fw-bold' } }) }}
+            {{ form_widget(form.date_retour_prevue, { 'attr': { 'class': 'form-control' } }) }}
+            {{ form_errors(form.date_retour_prevue) }}
+        </div>
+
+        <!-- Extension utilisée -->
+        <div class="form-check mb-3">
+            {{ form_widget(form.extension_utilisee, { 'attr': { 'class': 'form-check-input' } }) }}
+            {{ form_label(form.extension_utilisee, 'Extension utilisée', { 'label_attr': { 'class': 'form-check-label' } }) }}
+        </div>
+
+        <!-- Livre -->
+        <div class="mb-3">
+            {{ form_label(form.book, 'Livre', { 'label_attr': { 'class': 'form-label fw-bold' } }) }}
+            {{ form_widget(form.book, { 'attr': { 'class': 'form-select' } }) }}
+            {{ form_errors(form.book) }}
+        </div>
+
+        <!-- Bouton de soumission -->
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Soumettre</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}
+
